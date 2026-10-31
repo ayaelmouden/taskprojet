@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow - Organise tes tâches et avance chaque jour.">
+  <title>TaskFlow — Organisez votre journée</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="TaskFlow accueil">
+        <span class="brand-icon">✓</span>
+        <span>Task<span class="brand-accent">Flow</span><small>Planifier · Organiser · Réussir</small></span>
+      </a>
+      <nav class="nav-menu" aria-label="Navigation principale">
+        <button class="nav-link active" data-view="all"><span>▦</span> Tableau de bord</button>
+        <button class="nav-link" data-view="all"><span>☷</span> Toutes les tâches</button>
+        <button class="nav-link" data-view="completed"><span>✓</span> Terminées</button>
+        <button class="nav-link" data-view="settings"><span>⚙</span> Paramètres</button>
+      </nav>
+      <div class="sidebar-note"><span class="rocket">🚀</span><strong>Chaque petit pas<br>vous rapproche du succès !</strong><span class="heart">♥</span></div>
+      <div class="profile"><span class="avatar">A</span><span><b>Aya Elmouden</b><small>Espace personnel</small></span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="heading">
+          <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+          <div><p class="eyebrow">VOTRE ESPACE PERSONNEL</p><h1>Bienvenue, <span>Aya !</span> </h1><p class="subtitle">Prête à accomplir vos objectifs aujourd’hui ?</p></div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">☀️ <span>Mode clair</span></button>
+      </header>
+
+      <section class="stats-grid" aria-label="Statistiques">
+        <article class="stat-card purple"><span class="stat-icon">▤</span><div><strong id="totalCount">0</strong><span>Total des tâches</span></div></article>
+        <article class="stat-card green"><span class="stat-icon">✓</span><div><strong id="completedCount">0</strong><span>Terminées</span></div></article>
+        <article class="stat-card orange"><span class="stat-icon">◷</span><div><strong id="pendingCount">0</strong><span>En attente</span></div></article>
+        <article class="stat-card blue"><span class="stat-icon">▣</span><div><strong id="todayCount">0</strong><span>Pour aujourd’hui</span></div></article>
+      </section>
+
+      <section class="add-panel">
+        <div class="section-title"><span class="plus-icon">＋</span><div><h2 id="formTitle">Ajouter une tâche</h2><p>Une tâche après l’autre. Vous allez y arriver !</p></div></div>
+        <form id="taskForm">
+          <input id="taskInput" type="text" maxlength="100" placeholder="Que devez-vous faire ?" autocomplete="off" required>
+          <input id="taskDate" type="date" aria-label="Date limite">
+          <select id="taskPriority" aria-label="Priorité"><option value="medium">Priorité moyenne</option><option value="high">Priorité élevée</option><option value="low">Priorité faible</option></select>
+          <button class="primary-btn" id="submitBtn" type="submit">＋ Ajouter</button>
+          <button class="cancel-btn hidden" id="cancelEdit" type="button">Annuler</button>
+        </form>
+      </section>
+
+      <section class="tasks-section">
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filtrer les tâches">
+            <button class="filter-btn selected" data-filter="all">▦ Toutes <span id="allFilterCount">0</span></button>
+            <button class="filter-btn" data-filter="pending">◷ En attente <span id="pendingFilterCount">0</span></button>
+            <button class="filter-btn" data-filter="completed">✓ Terminées <span id="completedFilterCount">0</span></button>
+          </div>
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Rechercher une tâche..."></label>
+        </div>
+        <div class="task-list" id="taskList" aria-live="polite"></div>
+        <div class="empty-state hidden" id="emptyState"><span>📝</span><h3>Aucune tâche trouvée</h3><p>Ajoutez une tâche ou modifiez votre recherche.</p></div>
+      </section>
+      <footer>Réalisé avec <span>♥</span> par Aya Elmouden <small>· TaskFlow 2026</small></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
